@@ -8,7 +8,7 @@ export default tseslint.config(
     ignores: ["**/dist/**", "**/node_modules/**"],
   },
   {
-    files: ["packages/**/*.{ts,tsx}"],
+    files: ["packages/**/*.{ts,tsx}", "vitest.config.ts"],
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
   },
   {
@@ -22,7 +22,11 @@ export default tseslint.config(
     },
   },
   {
-    files: ["packages/{server,shared}/src/**/*.ts", "packages/server/tests/**/*.ts"],
+    files: [
+      "packages/{server,shared}/src/**/*.ts",
+      "packages/server/tests/**/*.ts",
+      "vitest.config.ts",
+    ],
     languageOptions: {
       globals: globals.node,
     },

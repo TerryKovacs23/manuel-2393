@@ -39,4 +39,4 @@ npm run typecheck
 npm run build
 ```
 
-`npm run check` ejecuta el chequeo de tipos, ESLint y las pruebas configuradas en todos los workspaces
+`npm run check` ejecuta el chequeo de tipos, ESLint y Vitest. Las pruebas se descubren en `packages/**/tests/**/*.test.{ts,tsx}` y se ejecutan en entorno Node.
