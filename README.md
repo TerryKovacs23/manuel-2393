@@ -32,8 +32,10 @@ También puedes iniciar cada aplicación por separado con `npm run dev:client` o
 ## Validación
 
 ```sh
-npm run build
+npm run check
+npm run lint
 npm run typecheck
+npm run build
 ```
 
-El scaffolding solo incluye una vista placeholder y un endpoint de salud; autenticación, dashboard, pagos y persistencia todavía no están implementados.
+`npm run check` ejecuta el chequeo de tipos y ESLint en todos los workspaces. ESLint valida TypeScript y, en el cliente, aplica también las reglas recomendadas de React Hooks.
