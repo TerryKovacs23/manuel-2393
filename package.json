@@ -1,0 +1,22 @@
+{
+  "name": "slow-rush",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n client,server \"npm:dev:client\" \"npm:dev:server\"",
+    "dev:client": "npm run dev --workspace=@slow-rush/client",
+    "dev:server": "npm run dev --workspace=@slow-rush/server",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}
