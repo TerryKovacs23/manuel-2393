@@ -33,9 +33,10 @@ También puedes iniciar cada aplicación por separado con `npm run dev:client` o
 
 ```sh
 npm run check
+npm test
 npm run lint
 npm run typecheck
 npm run build
 ```
 
-`npm run check` ejecuta el chequeo de tipos y ESLint en todos los workspaces. ESLint valida TypeScript y, en el cliente, aplica también las reglas recomendadas de React Hooks.
+`npm run check` ejecuta el chequeo de tipos, ESLint y las pruebas configuradas en todos los workspaces
