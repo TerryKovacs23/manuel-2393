@@ -59,22 +59,17 @@ packages/
 │       ├── services/
 │       │   └── storage/
 │       ├── modules/
-│       │   ├── auth/
+│       │   ├── feature/
 │       │   │   ├── components/
 │       │   │   ├── context/
 │       │   │   └── hooks/
-│       │   ├── dashboard/
-│       │   │   ├── components/
 │       │   │   └── mocks/
-│       │   └── snailpay/
-│       │       ├── components/
-│       │       ├── hooks/
-│       │       └── services/
+│       │   │   └── services/
 │       └── routes/
 └── server/
     └── src/
         ├── config/
         ├── middlewares/
         └── modules/
-            └── snailpay/
+            └── feature/
 ```
