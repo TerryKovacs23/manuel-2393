@@ -2,8 +2,6 @@
 
 Monorepo de Slow Rush con npm workspaces. La estructura contiene el cliente React/Vite, la API Express y el paquete TypeScript compartido.
 
-Consulta la [guía de desarrollo](docs/guia-desarrollo.md) para conocer la estructura del monorepo, las configuraciones TypeScript y el propósito de los proyectos.
-
 ## Requisitos
 
 - Node.js 20.19 o posterior

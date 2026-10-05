@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { normalizeEmail, validateRegistration } from '../../src/modules/auth/validation';
-import type { RegistrationInput } from '../../src/modules/auth/types'; 
+import { normalizeEmail, validateRegistration, validateLogin } from '../../src/modules/auth/validation';
+import type { RegistrationInput, LoginInput } from '../../src/modules/auth/types'; 
 // Arrange
 const validRegistration: RegistrationInput = {
     fullName: 'Ada Lovelace',
@@ -9,6 +9,11 @@ const validRegistration: RegistrationInput = {
     password: 'pas$word123',
     confirmPassword: 'pas$word123',
 }
+
+const validLogin: LoginInput = {
+    email: 'ada@example.com',
+    password: 'pas$word123',
+};
 
 describe('normalizeEmail', () => {
     it('trims surrounding whitespace and converts the email to lowercase', () => {
@@ -87,4 +92,29 @@ describe('validateRegistration', () => {
             'Las contraseñas no coinciden.',
         );
     }); 
+});
+
+describe('validateLogin', () =>{
+    //Act & Assert
+    it('returns null when the login data is valida', () => {
+        expect(validateLogin(validLogin)).toBeNull();
+    });
+    // Act && Assert
+    it('reports missing email and password', () => {
+        expect(validateLogin({email: '', password: ''})?.fieldErrors).toEqual({
+            email: 'El correo electrónico es obligatorio.',
+            password: 'La contraseña es obligatoria.',
+        });
+    });
+    
+    const invalidLogin: LoginInput = {
+        ...validLogin,
+        email: 'no-email',
+    };
+
+    // Act && Assert
+    it('rejects an invalid email format', () => {
+        expect(validateLogin(invalidLogin)?.fieldErrors.email)
+        .toBe('Ingresa un correo electrónico válido.');
+    });
 });

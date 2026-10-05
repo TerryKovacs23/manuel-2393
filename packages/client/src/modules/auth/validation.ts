@@ -1,4 +1,4 @@
-import type { RegistrationErrors, RegistrationInput } from './types';
+import type { RegistrationErrors, RegistrationInput, LoginInput, LoginErrors } from './types';
 
 const EMAIL_FORMAT = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -38,6 +38,27 @@ export function validateRegistration(
 
   if (Object.keys(fieldErrors).length === 0) {
     return null;
+  }
+
+  return { fieldErrors };
+}
+
+export function validateLogin(loginInput: LoginInput): LoginErrors | null {
+  const fieldErrors: LoginErrors['fieldErrors'] = {};
+  const normalizedEmail = normalizeEmail(loginInput.email);
+
+  if(!normalizedEmail) {
+    fieldErrors.email = 'El correo electrónico es obligatorio.';
+  } else if (!EMAIL_FORMAT.test(normalizedEmail)) {
+    fieldErrors.email = 'Ingresa un correo electrónico válido.';
+  }
+
+  if(!loginInput.password) {
+    fieldErrors.password = 'La contraseña es obligatoria.';
+  }
+
+  if(Object.keys(fieldErrors).length === 0) {
+    return null
   }
 
   return { fieldErrors };

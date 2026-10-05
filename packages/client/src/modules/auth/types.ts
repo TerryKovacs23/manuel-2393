@@ -24,3 +24,20 @@ export interface StoredAccount {
     credential: PasswordCredential;
     balanceCents: number;
 }
+
+export interface SessionData {
+    version: 1;
+    email: string;
+    fullName: string;
+    balanceCents: number;
+    loggedInAt: string;
+}
+
+export interface LoginInput {
+    email: string;
+    password: string;
+}
+
+export interface LoginErrors {
+    fieldErrors: Partial<Record<keyof LoginInput, string>>;
+}
