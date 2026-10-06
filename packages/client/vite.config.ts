@@ -5,10 +5,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      'health': {
+      '/api': {
         target: 'http://localhost:3000',
-        changeOrigin: true
-      }
-    }
-  }
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 });

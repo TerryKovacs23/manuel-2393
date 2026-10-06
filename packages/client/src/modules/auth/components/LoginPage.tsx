@@ -64,14 +64,15 @@ export function LoginPage() {
 
       if (result.status === 'success') {
         writeSession(
-        {
-          version: 1,
-          email: result.account.email,
-          fullName: result.account.fullName,
-          balanceCents: result.account.balanceCents,
-          loggedInAt: new Date().toISOString(),
-        },
-        window.localStorage,);
+          {
+            version: 1,
+            email: result.account.email,
+            fullName: result.account.fullName,
+            balanceCents: result.account.balanceCents,
+            loggedInAt: new Date().toISOString(),
+          },
+          window.localStorage,
+        );
 
         navigate('/dashboard', { state: { account: result.account } });
         return;
@@ -100,13 +101,22 @@ export function LoginPage() {
       }}
     >
       <Container maxWidth="sm">
-        <Paper component="section" elevation={2} sx={{ p: { xs: 3, sm: 5 } }}>
+        <Paper
+          component="section"
+          elevation={0}
+          sx={{
+            p: { xs: 3, sm: 5 },
+            borderRadius: 3,
+            border: '1px solid rgba(45, 52, 54, 0.08)',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(223,230,233,0.92) 100%)',
+          }}
+        >
           <Stack spacing={3}>
             <Stack spacing={1}>
-              <Typography component="p" fontWeight={700} variant="overline">
+              <Typography component="p" fontWeight={700} variant="overline" color="primary.main">
                 Slow Rush
               </Typography>
-              <Typography component="h1" variant="h4">
+              <Typography component="h1" variant="h4" color="primary.main">
                 Inicia sesión
               </Typography>
               <Typography color="text.secondary">

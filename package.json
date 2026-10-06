@@ -22,10 +22,10 @@
     "dev": "concurrently -k -n client,server \"npm:dev:client\" \"npm:dev:server\"",
     "dev:client": "npm run dev --workspace=@slow-rush/client",
     "dev:server": "npm run dev --workspace=@slow-rush/server",
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run build --workspace=@slow-rush/shared && npm run build --workspace=@slow-rush/server && npm run build --workspace=@slow-rush/client",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "test": "vitest run",
+    "test": "npm run test --workspaces --if-present",
     "check": "npm run typecheck && npm run lint && npm test"
   }
 }

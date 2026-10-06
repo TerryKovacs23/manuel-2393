@@ -1,13 +1,13 @@
 export interface HealthResponse {
-  status: 'Ok';
+  status: 'ok';
 }
 
 export async function getHealth(signal?: AbortSignal): Promise<HealthResponse> {
-    const response = await fetch('/health', { signal });
-    
-    if(!response.ok) {
-        throw new Error('La API devolvió una respuesta de salud inesperada.');
-    }
+  const response = await fetch('/api/health', { signal });
 
-    return { status: 'Ok' };
+  if (!response.ok) {
+    throw new Error('La API devolvió una respuesta de salud inesperada.');
+  }
+
+  return response.json() as Promise<HealthResponse>;
 }
